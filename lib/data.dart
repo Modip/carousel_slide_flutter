@@ -1,7 +1,7 @@
 class Picture {
-  final String? title, image, description, place;
+  final String? title, image, place;
 
-  Picture({this.title, this.image, this.description, this.place});
+  Picture({this.title, this.image, this.place});
 }
 
 List imgs = [
@@ -13,6 +13,7 @@ List imgs = [
   "assets/images/texas.jpg",
   "assets/images/monument.jpg",
   "assets/images/plane.jpg",
+  "assets/images/mansfield.jpg",
   "assets/images/moon2.jpg",
   "assets/images/moon1.jpg",
 ];
@@ -21,61 +22,56 @@ List allimages = [
   Picture(
     title: "Cleveland",
     image: "assets/images/cleveland.jpg",
-    description: "jsdsdhjh ,exclusive modip movies,exclusive modip movies",
-    place: "Cleveland",
+    place: "USA",
   ),
   Picture(
     title: "Niagara",
     image: "assets/images/niagara.jpg",
-    description: "jsdsdhjh ,exclusive modip movies,exclusive modip movies",
-    place: "EvenProd",
+    place: "Canada",
   ),
   Picture(
     title: "Sequence",
     image: "assets/images/sequence.jpg",
-    description: "jsdsdhjh ,exclusive modip movies,exclusive modip movies",
-    place: "EvenProd",
+    place: "USA",
   ),
   Picture(
-    title: "Ass",
+    title: "Statue of Liberty",
     image: "assets/images/statuelibe.jpg",
-    description: "jsdsdhjh ,exclusive modip movies,exclusive modip movies",
-    place: "EvenProd",
+    place: "USA",
   ),
   Picture(
-    title: "Ass",
+    title: "RedBull",
     image: "assets/images/redbul.jpg",
-    description: "jsdsdhjh ,exclusive modip movies,exclusive modip movies",
-    place: "EvenProd",
+    place: "USA",
   ),
   Picture(
-    title: "Ass",
+    title: "Texas",
     image: "assets/images/texas.jpg",
-    description: "jsdsdhjh ,exclusive modip movies,exclusive modip movies",
-    place: "EvenProd",
+    place: "USA",
   ),
   Picture(
     title: "Monument",
     image: "assets/images/monument.jpg",
-    description: "jsdsdhjh ,exclusive modip movies,exclusive modip movies",
-    place: "EvenProd",
+    place: "Mexique",
   ),
   Picture(
-    title: "Plane",
+    title: "Jonesboro",
     image: "assets/images/plane.jpg",
-    description: "jsdsdhjh ,exclusive modip movies,exclusive modip movies",
-    place: "EvenProd",
+    place: "USA",
+  ),
+  Picture(
+    title: "Mansfield",
+    image: "assets/images/mansfield.jpg",
+    place: "USA",
   ),
   Picture(
     title: "Moon",
     image: "assets/images/moon2.jpg",
-    description: "jsdsdhjh ,exclusive modip movies,exclusive modip movies",
-    place: "EvenProd",
+    place: "Canada",
   ),
   Picture(
     title: "Moon",
     image: "assets/images/moon1.jpg",
-    description: "jsdsdhjh ,exclusive modip movies,exclusive modip movies",
-    place: "EvenProd",
+    place: "USA",
   ),
 ];
