@@ -10,6 +10,7 @@ List imgs = [
   "assets/images/sequence.jpg",
   "assets/images/statuelibe.jpg",
   "assets/images/redbul.jpg",
+  "assets/images/love.jpg",
   "assets/images/texas.jpg",
   "assets/images/monument.jpg",
   "assets/images/plane.jpg",
@@ -40,8 +41,13 @@ List allimages = [
     place: "USA",
   ),
   Picture(
-    title: "RedBull",
+    title: "RedBull takes advantage",
     image: "assets/images/redbul.jpg",
+    place: "USA",
+  ),
+  Picture(
+    title: "Love",
+    image: "assets/images/love.jpg",
     place: "USA",
   ),
   Picture(
@@ -50,9 +56,9 @@ List allimages = [
     place: "USA",
   ),
   Picture(
-    title: "Monument",
+    title: "Toronto",
     image: "assets/images/monument.jpg",
-    place: "Mexique",
+    place: "Canada",
   ),
   Picture(
     title: "Jonesboro",

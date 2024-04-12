@@ -14,16 +14,19 @@ class _HomeState extends State<Home> {
   int currentindex = 0;
 
   double sizeBottom = 160;
-  bool showDetail = false;
+  bool showDetail = true;
+  Color color = Colors.transparent;
 
   void _moveDetailWidget() {
     setState(() {
       if (sizeBottom == 160) {
-        sizeBottom = 95;
         showDetail = false;
+        color = Colors.orangeAccent;
+        sizeBottom = 95;
       } else if (sizeBottom == 95) {
-        sizeBottom = 160;
         showDetail = true;
+        color = Colors.transparent;
+        sizeBottom = 160;
       }
     });
   }
@@ -52,91 +55,100 @@ class _HomeState extends State<Home> {
             ),
           ),
           PageView.builder(
-              onPageChanged: (value) {
-                setState(() {
-                  currentindex = value;
-                });
-              },
-              itemCount: allimages.length,
-              itemBuilder: (context, int index) {
-                final picture = allimages[index];
-                return Stack(
-                  children: [
-                    AnimatedPositioned(
-                      duration: const Duration(milliseconds: 800),
-                      bottom: sizeBottom,
-                      left: 35,
-                      right: 35,
-                      child: Container(
-                        height: height * .08,
-                        decoration: const BoxDecoration(
-                          color: Colors.orangeAccent,
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(16),
-                            bottomRight: Radius.circular(16),
+            onPageChanged: (value) {
+              setState(() {
+                currentindex = value;
+              });
+            },
+            itemCount: allimages.length,
+            itemBuilder: (context, int index) {
+              final picture = allimages[index];
+              return Stack(
+                children: [
+                  AnimatedPositioned(
+                    duration: const Duration(milliseconds: 800),
+                    curve: Curves.bounceOut,
+                    bottom: sizeBottom,
+                    left: 35,
+                    right: 35,
+                    child: Container(
+                      height: height * .08,
+                      decoration: BoxDecoration(
+                        color: color,
+                        borderRadius: const BorderRadius.only(
+                          bottomLeft: Radius.circular(16),
+                          bottomRight: Radius.circular(16),
+                        ),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              picture.title,
+                              maxLines: 2,
+                              style: TextStyle(
+                                  color: showDetail
+                                      ? Colors.transparent
+                                      : Colors.black,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w700),
+                            ),
                           ),
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                picture.title,
-                                style: const TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 22,
-                                    fontWeight: FontWeight.w700),
-                              ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              picture.place,
+                              style: TextStyle(
+                                  color: showDetail
+                                      ? Colors.transparent
+                                      : Colors.black,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w700),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                picture.place,
-                                style: const TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 22,
-                                    fontWeight: FontWeight.w700),
-                              ),
-                            ),
-                          ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 150,
+                    left: 35,
+                    right: 35,
+                    child: InkWell(
+                      onTap: () {
+                        setState(
+                          () {
+                            _moveDetailWidget();
+                          },
+                        );
+                      },
+                      child: Container(
+                        height: height * .6,
+                        width: width * .8,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                            topLeft: const Radius.circular(16),
+                            topRight: const Radius.circular(16),
+                            bottomLeft: showDetail
+                                ? const Radius.circular(16)
+                                : const Radius.circular(0),
+                            bottomRight: showDetail
+                                ? const Radius.circular(16)
+                                : const Radius.circular(0),
+                          ),
+                          image: DecorationImage(
+                              image: AssetImage(picture.image),
+                              fit: BoxFit.cover),
                         ),
                       ),
                     ),
-                    Positioned(
-                      top: 150,
-                      left: 35,
-                      right: 35,
-                      child: InkWell(
-                        onTap: () {
-                          setState(
-                            () {
-                              _moveDetailWidget();
-                            },
-                          );
-                        },
-                        child: Container(
-                          height: height * .6,
-                          width: width * .8,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.only(
-                                  topLeft: const Radius.circular(16),
-                                  topRight: const Radius.circular(16),
-                                  bottomLeft: showDetail
-                                      ? const Radius.circular(16)
-                                      : const Radius.circular(0),
-                                  bottomRight: showDetail
-                                      ? const Radius.circular(16)
-                                      : const Radius.circular(0)),
-                              image: DecorationImage(
-                                  image: AssetImage(picture.image),
-                                  fit: BoxFit.cover)),
-                        ),
-                      ),
-                    ),
-                  ],
-                );
-              }),
+                  ),
+                ],
+              );
+            },
+          ),
         ],
       ),
     );
